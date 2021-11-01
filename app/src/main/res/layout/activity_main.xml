@@ -8,12 +8,25 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="280dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="59dp"
-        android:layout_marginTop="64dp"
+        android:layout_width="318dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="128dp"
+        android:fontFamily="sans-serif-condensed"
         android:text="Biometrikus Azonosítás Szükséges!"
         android:textAlignment="center"
+        android:textSize="32dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="142dp"
+        android:layout_marginTop="175dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/ic_baseline_fingerprint_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,15 +1,1 @@
-package com.example.privatenotes
-
-import android.hardware.biometrics.BiometricManager
-import android.hardware.biometrics.BiometricPrompt
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-
-class MainActivity : AppCompatActivity()
-{
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
-}
+package com.example.privatenotesimport android.content.Intentimport androidx.biometric.BiometricPrompt;import androidx.appcompat.app.AppCompatActivityimport android.os.Bundleimport android.widget.ImageButtonimport android.widget.Toastimport androidx.core.content.ContextCompatimport java.util.concurrent.Executorclass MainActivity : AppCompatActivity(){    lateinit var executor: Executor    //lateinit var biometricManager: BiometricManager    lateinit var biometricPrompt: BiometricPrompt    lateinit var promptInfo: BiometricPrompt.PromptInfo    lateinit var button : ImageButton    override fun onCreate(savedInstanceState: Bundle?)    {        super.onCreate(savedInstanceState)        setContentView(R.layout.activity_main)        button = findViewById(R.id.imageButton)        executor = ContextCompat.getMainExecutor(this)        biometricPrompt = BiometricPrompt(this@MainActivity, executor, object : BiometricPrompt.AuthenticationCallback() {            override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {                super.onAuthenticationError(errorCode, errString)                Toast.makeText(this@MainActivity,"A hitelesítés nem sikerült!: $errString", Toast.LENGTH_SHORT).show()            }            override fun onAuthenticationFailed() {                super.onAuthenticationFailed()                Toast.makeText(this@MainActivity,"HIBA", Toast.LENGTH_SHORT).show()            }            override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {                super.onAuthenticationSucceeded(result)                Toast.makeText(this@MainActivity,"Sikeres Hitelesítés!", Toast.LENGTH_SHORT).show()                val intent = Intent(this@MainActivity, Note::class.java)                startActivity(intent)            }        })        promptInfo = BiometricPrompt.PromptInfo.Builder()            .setTitle("Biometrikus Azonosítás")            .setNegativeButtonText("Vissza")            .build()        button.setOnClickListener()        {            biometricPrompt.authenticate(promptInfo)        }    }}
