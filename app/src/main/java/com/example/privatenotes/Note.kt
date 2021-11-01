@@ -5,6 +5,7 @@ import android.icu.util.Output
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
+import android.widget.Toast
 import java.io.*
 import java.lang.StringBuilder
 
@@ -17,17 +18,24 @@ class Note : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_note)
 
+        val path = this.getExternalFilesDir(null)
+        val folder = File(path, "Privat Note")
+        folder.mkdirs()
+
         textArea = findViewById(R.id.textArea)
         textArea.setText(readFrom(this))
     }
 
     fun writeTo(data : String,  context: Context)
     {
+
         try
         {
-            val outputStreamWriter = OutputStreamWriter(context.openFileOutput("sec.pn", Context.MODE_PRIVATE))
+            val outputStreamWriter = OutputStreamWriter(context.openFileOutput("secret.pn", Context.MODE_PRIVATE))
             outputStreamWriter.write(data)
             outputStreamWriter.close()
+
+            //Toast.makeText(this, filesDir.toString(), Toast.LENGTH_LONG).show()
         }
         catch (e : IOException)
         {
@@ -37,10 +45,10 @@ class Note : AppCompatActivity()
 
     fun readFrom(context : Context): String
     {
-        lateinit var ret : String
+        var ret = ""
         try
         {
-            val inputStream = context.openFileInput("sec.pn")
+            val inputStream = context.openFileInput("secret.pn")
 
             if(inputStream != null)
             {
@@ -51,7 +59,7 @@ class Note : AppCompatActivity()
 
                 while ( {receiveString = bufferedReader.readLine(); receiveString}() != null )
                 {
-                    stringBuilder.append(receiveString)
+                    stringBuilder.append(receiveString).append("\n")
                 }
 
                 inputStream.close()

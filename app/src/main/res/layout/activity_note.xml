@@ -14,7 +14,7 @@
         android:background="@null"
         android:gravity="top|left"
         android:inputType="textMultiLine"
-        android:lines="30"
+        android:lines="@integer/material_motion_duration_long_1"
         android:overScrollMode="always"
         android:scrollbarStyle="insideInset"
         android:scrollbars="vertical"
