@@ -2,23 +2,37 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutAnimatedBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/layoutAnimatedBackground"
     android:background="@drawable/gradient_list"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="315dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="212dp"
+        android:layout_marginEnd="59dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="Azonosítás Szükséges!"
+        android:gravity="center"
+        android:text="ℙℝ𝕀𝕍      𝕋𝔼 ℕ𝕆𝕋𝔼𝕊"
         android:textAlignment="center"
-        android:textSize="32dp"
+        android:textColor="@color/white"
+        android:textSize="36dp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifImageView"
+        android:layout_width="45dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="212dp"
+        android:src="@drawable/lock"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,9 +41,11 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginStart="144dp"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="212dp"
         android:background="@null"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/ic_baseline_fingerprint_24" />
+        app:srcCompat="@drawable/ic_baseline_fingerprint_24"
+        tools:ignore="SpeakableTextPresentCheck" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

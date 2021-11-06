@@ -17,12 +17,13 @@ class Note : AppCompatActivity()
     lateinit var textArea: EditText
 
     override fun onCreate(savedInstanceState: Bundle?)
-    {        supportActionBar?.hide()
+    {
 
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
-
+        supportActionBar?.hide()
 
         super.onCreate(savedInstanceState)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+
         setContentView(R.layout.activity_note)
 
         val constraintLayout = findViewById<ConstraintLayout>(R.id.layoutAnimatedBackground)
@@ -41,7 +42,6 @@ class Note : AppCompatActivity()
 
     fun writeTo(data : String,  context: Context)
     {
-
         try
         {
             val outputStreamWriter = OutputStreamWriter(context.openFileOutput("secret.pn", Context.MODE_PRIVATE))
